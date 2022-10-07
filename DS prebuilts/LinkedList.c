@@ -16,10 +16,10 @@ void insertNode(list **super, int val, char loc)
         (*super)->next = NULL;
         return;
     }
-    list *temp = (list *)malloc(sizeof(list));
+    list *temp = (list *)malloc(sizeof(list)); // stores current node
+    temp->val = val;
     if (loc == 'e')
     { // inserting at end
-        temp->val = val;
         temp->next = NULL;
         list *trav = *super;
         while (trav->next != NULL)
@@ -31,14 +31,12 @@ void insertNode(list **super, int val, char loc)
     }
     else if (loc == 's')
     { // inserting at start
-        temp->val = val;
         temp->next = *super;
         *super = temp;
         return;
     }
     else if (loc == 'm')
     { // inserting in the middle
-        temp->val = val;
         printf("Enter location ");
         int n;
         scanf("%d", &n);
@@ -60,7 +58,7 @@ void deleteNode(list **super, char loc)
 {
     if (*super == NULL) // if list is empty
         return;
-    list *temp = (list *)malloc(sizeof(list));
+    list *temp = (list *)malloc(sizeof(list)); // temp pointer to be freed
     if (loc == 's')
     { // deleting from start
         temp = *super;
@@ -109,11 +107,11 @@ void traverse(list **super)
 
 int main()
 {
-    list *head = NULL;
+    list *head = NULL; // initial pointer
     for (int i = 0; i <= 7; i++)
     {
-        insertNode(&head, i, 'e');
+        insertNode(&head, i, 'e'); // double pointer
     }
-    traverse(&head);
+    traverse(&head); // double pointer
     return 0;
 }
