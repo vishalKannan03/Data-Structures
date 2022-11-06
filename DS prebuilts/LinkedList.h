@@ -104,14 +104,3 @@ void traverse(list **super)
         trav = trav->next;
     } while (trav != NULL);
 }
-
-int main()
-{
-    list *head = NULL; // initial pointer
-    for (int i = 0; i <= 7; i++)
-    {
-        insertNode(&head, i, 'e'); // double pointer
-    }
-    traverse(&head); // double pointer
-    return 0;
-}

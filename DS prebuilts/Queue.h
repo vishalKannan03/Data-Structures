@@ -64,11 +64,3 @@ void deleteQueue(Q *q)
 {
     free(q);
 }
-
-int main()
-{
-    int n = 10;
-    Q *q = initQueue(10);
-
-    deleteQueue(q);
-}

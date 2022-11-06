@@ -73,11 +73,3 @@ void deleteStack(stk *s)
 {
     free(s);
 }
-
-int main()
-{
-    int n = 10;
-    stk *s = initStack(n);
-
-    deleteStack(s);
-}
