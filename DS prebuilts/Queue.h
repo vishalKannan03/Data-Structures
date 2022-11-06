@@ -16,6 +16,7 @@ Q *initQueue(unsigned size)
     q->front = q->count = 0;
     q->rear = -1;
     q->elem = (int *)malloc(q->size * sizeof(int));
+    return q;
 }
 
 int isFull(Q *q)
