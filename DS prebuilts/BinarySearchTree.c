@@ -8,26 +8,24 @@ typedef struct BinarySearchTree
     struct BinarySearchTree *left, *right;
 } node;
 
-node *insert(node *n, int key)
+void insert(node **n, int key)
 {
-    if (n == NULL)
+    if (*n == NULL)
     {
         node *temp = (node *)malloc(sizeof(node));
         temp->key = key;
         temp->left = NULL;
         temp->right = NULL;
-        return temp;
+        *n = temp;
     }
-    if (key < n->key)
+    if (key < (*n)->key)
     {
-        n->left = insert(n->left, key);
+        insert(&((*n)->left), key);
     }
-    else if (key > n->key)
+    else if (key > (*n)->key)
     {
-        n->right = insert(n->right, key);
+        insert((&(*n)->right), key);
     }
-
-    return n;
 }
 
 void inorder(node *root)
@@ -137,14 +135,13 @@ node *deleteNode(node *root, int key)
 int main()
 {
     node *root = NULL;
-    root = insert(root, 50);
-    insert(root, 30);
-    insert(root, 20);
-    insert(root, 40);
-    insert(root, 70);
-    insert(root, 60);
-    insert(root, 80);
-    printf("%d\n", search(root, 90));
-    printf("%d \n", height(root));
+    int n;
+    scanf("%d", &n);
+    int j;
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &j);
+        insert(&root, j);
+    }
     inorder(root);
 }
